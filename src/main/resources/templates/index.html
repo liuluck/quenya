@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8,IE=9,IE=10" />
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/bootstrap/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <script src="easyui/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="easyui/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="login" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+     buttons="#login-buttons" modal="true" title="请登录" closable="false">
+    <div class="ftitle">please input the user infomations</div>
+    <form id="loginform" method="post" action="#">
+        <div class="fitem">
+            <label>username:</label>
+            <input type="text" name="username" class="easyui-validatebox" required="true" />
+        </div>
+        <div class="fitem">
+            <label>password:</label>
+            <input type="password" name="password" class="easyui-validatebox" required="true"  />
+        </div>
+    </form>
+</div>
+<div id="login-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="login()">signIn</a>
+</div>
+
+<script type="text/javascript">
+    function login() {
+        $('#loginform').form('submit', {
+            url: '/login/sign',
+            onSubmit: function(){
+                return $(this).form('validate');
+            },
+            success: function(result){
+                result = eval('(' + result + ')');
+                if (result.successful) {
+                    window.location.href="#";
+                } else {
+                    $.messager.show({title: '操作结果',msg: result.msg});
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

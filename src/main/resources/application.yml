@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    initialSize: 5
+    maxActive: 10
+    minIdle: 3
+    maxWait: 30000
+    timeBetweenEvictionRunsMillis: 30000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    logAbandoned: true
+
+  profiles:
+    active: local
+#  resources:
+#    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path}
+
+mybatis:
+  mapperLocations: classpath*:/mybatis/dao/mapper/**/*Mapper.xml
+  typeAliasesPackage: net.quenya.model.dao

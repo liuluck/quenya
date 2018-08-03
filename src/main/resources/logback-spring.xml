@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="local">
+        <logger name="net.quenya" level="DEBUG"/>
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="ch.qos" level="ERROR"/>
+        <logger name="freemarker" level="ERROR"/>
+        <logger name="org.apache" level="ERROR"/>
+        <logger name="org.xnio.nio" level="ERROR"/>
+        <logger name="org.hibernate.validator" level="ERROR"/>
+        <logger name="io.netty" level="INFO"/>
+        <logger name="io.undertow" level="ERROR"/>
+        <logger name="io.grpc.netty" level="info"/>
+        <logger name="com.netflix" level="info"/>
+       <!-- <root level="DEBUG">
+            <appender-ref ref="stdoutAppender"/>
+        </root>-->
+    </springProfile>
+
+    <springProfile name="dev,test">
+        <logger name="net.quenya" level="INFO"/>
+        <logger name="freemarker" level="ERROR"/>
+        <logger name="org.springframework" level="ERROR"/>
+        <logger name="ch.qos" level="ERROR"/>
+        <logger name="org.apache" level="ERROR"/>
+        <logger name="org.xnio.nio" level="ERROR"/>
+        <logger name="org.hibernate.validator" level="ERROR"/>
+        <logger name="io.netty" level="ERROR"/>
+        <logger name="io.undertow" level="ERROR"/>
+        <logger name="mousio.etcd4j" level="ERROR"/>
+        <logger name="com.netflix" level="ERROR"/>
+        <logger name="org.xnio" level="ERROR"/>
+        <logger name="org.hibernate" level="ERROR"/>
+        <root level="INFO">
+            <appender-ref ref="errorAppender"/>
+            <appender-ref ref="infoAppender"/>
+            <!--<appender-ref ref="stdoutAppender"/>-->
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <logger name="net.quenya" level="INFO"/>
+        <root level="ERROR">
+            <appender-ref ref="infoAppender"/>
+            <appender-ref ref="errorAppender"/>
+        </root>
+    </springProfile>
+
+</configuration>
