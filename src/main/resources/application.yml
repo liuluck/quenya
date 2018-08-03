@@ -24,5 +24,5 @@ spring:
 #    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path}
 
 mybatis:
-  mapperLocations: classpath*:/mybatis/dao/mapper/**/*Mapper.xml
-  typeAliasesPackage: net.quenya.model.dao
+  mapperLocations: classpath*:/mapper/**/*Mapper.xml
+  typeAliasesPackage: net.quenya.model

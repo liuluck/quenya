@@ -1,10 +1,12 @@
 package net.quenya.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import net.quenya.model.entity.User;
+import net.quenya.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 
 
 @Controller
@@ -12,9 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "login")
 public class LoginController extends BaseController{
 
-    @RequestMapping(value = "sign")
-    public void login(@RequestAttribute String a){
-        System.out.println("hello==============");
+    @Resource
+    UserService userService;
 
+    @RequestMapping(value = "sign")
+    public String login(String username){
+        log.debug("hello=============={}",username);
+        final User admin = userService.getUserByLoginName("admin");
+        log.info("admin.mobile: {}",admin.mobile);
+        return "success";
     }
 }

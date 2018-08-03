@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.quenya.model.mapper.UserMapper">
+
+
+    <select id="findByLoginName" parameterType="String" resultType="User">
+        select
+        `id`,
+        `real_name` realName,
+        `login_name`  loginName,
+        `password`  password,
+        `enabled`,
+        `mobile`,
+        `email`,
+        `login_times` loginTimes,
+        `roles` roles,
+        `login_err_times` loginErrTimes,
+        `last_login`  lastLogin,
+        `created_time`  createdTime
+        from `user`
+        where login_name = #{loginName}
+    </select>
+
+
+</mapper>
