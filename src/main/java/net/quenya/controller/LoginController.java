@@ -6,11 +6,12 @@ import net.quenya.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
 
-@Controller
+@RestController
 @Slf4j
 @RequestMapping(value = "login")
 public class LoginController extends BaseController{
@@ -19,9 +20,9 @@ public class LoginController extends BaseController{
     UserService userService;
 
     @RequestMapping(value = "sign")
-    @ResponseBody
     public String login(String username){
-        log.debug("hello=============={}",username);
+        log.info("hello=============={}",username);
+        System.out.println("hello=============={}"+username);
         final User admin = userService.getUserByLoginName("admin");
         log.info("admin.mobile: {}",admin.mobile);
         return "";

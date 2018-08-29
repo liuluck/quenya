@@ -2,7 +2,7 @@
 <configuration>
     <appender name="stdoutAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
@@ -17,7 +17,7 @@
             <pattern>${MY_FILE_LOG_PATTERN}</pattern>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
+            <level>DEBUG</level>
         </filter>
     </appender>
 
@@ -85,10 +85,10 @@
         <logger name="com.netflix" level="ERROR"/>
         <logger name="org.xnio" level="ERROR"/>
         <logger name="org.hibernate" level="ERROR"/>
-        <root level="INFO">
+        <root level="DEBUG">
             <appender-ref ref="errorAppender"/>
             <appender-ref ref="infoAppender"/>
-            <!--<appender-ref ref="stdoutAppender"/>-->
+            <appender-ref ref="stdoutAppender"/>
         </root>
     </springProfile>
 

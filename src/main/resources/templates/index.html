@@ -25,17 +25,18 @@
     </form>
 </div>
 <div id="login-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="login()">signIn</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick=   "login()">signIn</a>
 </div>
 
 <script type="text/javascript">
     function login() {
-        $('#loginform').form('submit', {
+        /*$('#loginform').form('submit', {
             url:"login/sign",
             onSubmit: function(param){
                 //param.username = "aaa";
-            }
-            /*success: function (data) {  //表单提交成功后的回调函数，里面参数data是我们调用/BasicClass/ModifyClassInfo方法的返回值。
+            },
+            success: function (data) {  //表单提交成功后的回调函数，里面参数data是我们调用/BasicClass/ModifyClassInfo方法的返回值。
+                alert(data);
                 if (data > 0) {
                     $.messager.show({
                         title: '提示消息',
@@ -50,7 +51,17 @@
                 }else {
                     $.messager.alert('提示信息', '提交失败，请联系管理员！', 'warning');
                 }
-            }*/
+            }
+        });*/
+
+        $('#loginform').form('submit', {
+            url:"login/sign",
+            onSubmit:function () {
+                return true;	// return false will stop the form submission
+            },
+            success: function () {
+                $.messager.progress('close');	// hide progress bar while submit successfully
+            }
         });
     }
 </script>
