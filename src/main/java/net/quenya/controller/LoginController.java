@@ -5,6 +5,7 @@ import net.quenya.model.entity.User;
 import net.quenya.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
@@ -18,10 +19,11 @@ public class LoginController extends BaseController{
     UserService userService;
 
     @RequestMapping(value = "sign")
+    @ResponseBody
     public String login(String username){
         log.debug("hello=============={}",username);
         final User admin = userService.getUserByLoginName("admin");
         log.info("admin.mobile: {}",admin.mobile);
-        return "success";
+        return "";
     }
 }
