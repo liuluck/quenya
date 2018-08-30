@@ -20,11 +20,9 @@ public class LoginController extends BaseController{
     UserService userService;
 
     @RequestMapping(value = "sign")
-    public String login(String username){
-        log.info("hello=============={}",username);
-        System.out.println("hello=============={}"+username);
-        final User admin = userService.getUserByLoginName("admin");
-        log.info("admin.mobile: {}",admin.mobile);
+    public String login(String username,String password){
+        final User user = userService.getUserByLoginName(username);
+        log.info("admin.mobile: {}",user.mobile);
         return "";
     }
 }
