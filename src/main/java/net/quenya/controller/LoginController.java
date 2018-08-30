@@ -22,7 +22,7 @@ public class LoginController extends BaseController{
     @RequestMapping(value = "sign")
     public String login(String username,String password){
         final User user = userService.getUserByLoginName(username);
-        log.info("admin.mobile: {}",user.mobile);
+        log.debug("admin.mobile: {}",user.mobile);
         return "";
     }
 }
